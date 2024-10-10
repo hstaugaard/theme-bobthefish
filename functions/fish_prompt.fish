@@ -1290,13 +1290,7 @@ function fish_prompt -d 'bobthefish, a fish theme optimized for awesome'
 
     set -l real_pwd (__bobthefish_pwd)
 
-    # PS1="\[\033]133;D;\007\]\[\033]133;A;\007\]$PS1\[\033]133;B;\007\]"
-
-    if test $last_status -ne 0
-        echo -n -e "\e]133;D;$last_status\a\e]133;A;\a"
-    else
-        echo -n -e '\e]133;D;\a\e]133;A;\a'
-    end
+    echo -n -e "\e]133;D;$last_status\a\e]133;A\a"
 
     # Status flags and input mode
     __bobthefish_prompt_status $last_status
@@ -1344,5 +1338,9 @@ function fish_prompt -d 'bobthefish, a fish theme optimized for awesome'
 
     __bobthefish_finish_segments
 
-    echo -n -e '\e]133;B;\a'
+    # echo -n -e '\e]133;B\a'
+end
+
+function _start_output --on-event fish_preexec
+    echo -n -e '\e]133;C\a'
 end
