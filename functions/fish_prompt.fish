@@ -1291,6 +1291,7 @@ function fish_prompt -d 'bobthefish, a fish theme optimized for awesome'
     set -l real_pwd (__bobthefish_pwd)
 
     echo -n -e "\e]133;D;$last_status\a\e]133;A\a"
+    echo -n -e "\e]9;9;\""(pwd)"\"\a"
 
     # Status flags and input mode
     __bobthefish_prompt_status $last_status
